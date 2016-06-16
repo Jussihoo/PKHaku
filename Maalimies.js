@@ -29,20 +29,26 @@ function pushCoordsData(data){
 }
 
 function sendTargetCoordinates(coordData, res){
-	pushCoordsData(CoordData);
+	coordData["source"] = "targetman"; /*
+	data["name"] = coordData.name;
+	data["LAT"] = coordData.LAT;
+	data["LON"] = coordData.LON; */
+	pushCoordsData(coordData);
 	sendRes(res, "");
 }
 
 function handleSenses(senses, time){ 
     var pushData = {};  // init
+    pushData["source"] = "dog";
     for (var i=0; i<senses.length; i++){ // go through all the senses data
       if (senses[i].sId == '0x00010100' ){ // Latitude
         console.log("The latitude is " + senses[i].val); // remove this
-        pushData["source"] = "dog";
-        pushData["LAT"] = senses[i].val;
-        pushData["time"] = time;
-        storeSensesData("temperature", "temp", currentTemp, time);   
+        pushData["LAT"] = senses[i].val;  
       }
+		if (senses[i].sId == '0x00010200' ){ // Longtitude
+        console.log("The latitude is " + senses[i].val); // remove this
+        pushData["LON"] = senses[i].val;  
+      }      
       else{
         console.dir(senses[i]);
       }
@@ -59,7 +65,7 @@ if (i < 10) {
 
 
 
-//REST API implementation for getting the log data from the client
+//REST API implementation sending the coordinates from the target man
 server.post('/sendCoords', function (req, res, next) {
     var coordData = req.params;
     console.log ("Maalimies coordinates received");
@@ -67,12 +73,6 @@ server.post('/sendCoords', function (req, res, next) {
     next();
 });
 
-//REST API implementation for getting the log data from the client
-server.post('/getLog', function (req, res, next) {
-    console.log ("Log request received");
-    getLogdata(res, getButtonStats);
-    next();
-});
 
 // REST API implementation for handling the push messages from the Thingsee IOT
 server.post('/', function (req, res, next) {
@@ -97,7 +97,7 @@ io.sockets.on('connection', function (socket) {
     //postToFacebook(string, config.token);
 });                              
 
-server.listen(8080, function () {
+server.listen(8060, function () {
     console.log('Node.js weatherMachine Kerttu listening at %s', server.url);
 });
 
