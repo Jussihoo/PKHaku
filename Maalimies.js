@@ -26,6 +26,7 @@ var sendRes = function(res,items){
 
 function pushCoordsData(data){
   io.emit('PushLocation', JSON.stringify(data));  // send data to browser
+  console.Log("Coordinates pushed");
 }
 
 function sendTargetCoordinates(coordData, res){
@@ -34,6 +35,7 @@ function sendTargetCoordinates(coordData, res){
 	data["LAT"] = coordData.LAT;
 	data["LON"] = coordData.LON; */
 	pushCoordsData(coordData);
+	console.dir(coordData);
 	sendRes(res, "");
 }
 
@@ -46,7 +48,7 @@ function handleSenses(senses, time){
         pushData["LAT"] = senses[i].val;  
       }
 		if (senses[i].sId == '0x00010200' ){ // Longtitude
-        console.log("The latitude is " + senses[i].val); // remove this
+        console.log("The longitude is " + senses[i].val); // remove this
         pushData["LON"] = senses[i].val;  
       }      
       else{
@@ -138,6 +140,6 @@ io.sockets.on('connection', function (socket) {
 });                              
 
 server.listen(8060, function () {
-    console.log('Node.js weatherMachine Kerttu listening at %s', server.url);
+    console.log('Node.js Maalimies server is listening at %s', server.url);
 });
 
