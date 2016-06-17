@@ -10,3 +10,15 @@ The position of the target or targets and the dog is pushed in realtime to the h
 - Katriina Huovila
 - Tarja Muikku
 - Juhani Hakosalo
+
+Finnish description about the Service dogs searching. "PK haku"
+
+Hakukoe (PAHA), koulutustunnus HK1-3
+Hakukoirien historia ulottuu 1800-luvulle asti. Tuolloin St. Bemhardinkoiria käytettiin Alpeilla lumivyöryissä hautautuneiden etsimiseen. Vähän ennen ensimmäistä maailmansotaa saksalainen sotilas Konrad Most kehitti koirien etsintätaitoja kouluttamalla poliisi- ja lääkintäkoiria. Ensimmäisen maailmansodan puhjetessa 1914 todettiin koirien erinomaisuus taisteluissa haavoittuneiden etsimisessä. Tästä lähti alkuun koirien henkilöetsintään kouluttamisen kehittäminen.
+Hakukokeen henkilöetsinnässä koiran tulee etsiä, löytää ja ilmaista merkityltä alueelta sinne piiloutuneet 3 ihmisiä. Etsittäviä henkilöitä kutsutaan maalimiehiksi. Henkilöhakualueen koko kasvaa koeluokittain. 1-luokassa alue on kooltaan 10 0m x 100 m, ja etsintäaika 10 minuuttia. 2-luokassa 100 m x 200 m, ja etsintäaikaa on 15 minuuttia ja 3-luokassa 100 m x 300 m, ja etsintäaikaa on 20 minuuttia. Alueen keskilinja on merkitty, ja ohjaaja kulkee tätä merkittyä linjaa pitkin ohjatessaan koiran etsintää.
+Maalimiehet menevät piiloihin ennen koiran ja ohjaajan radalle tuloa. Tuomari selittää ohjaajalle alueen rajat ja ohjaajan tulee ohjata koira suorittamaan etsintää alueen sisällä. Koiran tulee etsiä alue järjestelmällisesti risteillen keskilinjalta alueen reunoihin ja takaisin. Saadessaan hajun maalimiehestä koiran tulee paikantaa haju ja ilmaista löytämänsä maalimies joko haukkumalla tai tuomalla ohjaajalle rulla merkiksi löytyneestä maalimiehestä.
+Haukkumalla ilmaisevan koiran tulee pysyä maalimiehen välittömässä läheisyydessä ja haukkua siten, että ohjaaja vaivattomasti löytää koiran luo. Rullalla ilmaiseva koira ottaa maalimiehen löydettyään kaulapannassaan roikkuvan rullan suuhunsa ja vie rullan ohjaajalle, joka kytkee koiran taluttimeen ja käskee koiran palata maalimiehen luo.
+Hakukokeessa koira ei missään tapauksessa saa olla aggressiivinen maalimiehiä kohtaan. Ei myöskään ole suotavaa, että koira on liian mielistelevä, vaan koiran tulee antaa maalimiehen olla rauhassa ja antaa hänen tulla myös häiritsemättä pois piilosta. Kun maalimies on löytynyt ja tullut pois piilosta, palataan keskilinjalla samalle kohdalle mistä ilmaisuun lähdettiin ja ohjaaja lähettää koiran jatkamaan etsintää.
+Haun harjoitteluun tarvitaan koulutusryhmä, joka kokoontuu yhdessä kouluttamaan koiria etsintään. Jokainen ryhmän jäsen kouluttaa ryhmässä omaa koiraansa, mutta toimii myös toisille maalimiehenä.
+Kokeessa tuomari arvostelee koiran ja ohjaajan yhteistyötä ja erityisesti koiran halukkuutta etsintään ja maalimiesten ilmaisuun.
+
