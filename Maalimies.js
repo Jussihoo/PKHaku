@@ -26,7 +26,7 @@ var sendRes = function(res,items){
 
 function pushCoordsData(data){
   io.emit('PushLocation', JSON.stringify(data));  // send data to browser
-  console.Log("Coordinates pushed");
+  console.log("Coordinates pushed");
 }
 
 function sendTargetCoordinates(coordData, res){
