@@ -116,8 +116,8 @@ socket.on('PushLocation', function (data) {
             targetManData.push(tempData);
             console.log("TargetMan: ", targetManData);
     } else if (allData.source === "dog") {
-            tempData.lat = allData.lat;
-            tempData.lon = allData.lon;
+            tempData.lat = allData.LAT;
+            tempData.lon = allData.LON;
             dogData.push(tempData);
             console.log("Dog: ", dogData);
     }
