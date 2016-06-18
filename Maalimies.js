@@ -6,8 +6,12 @@ var server = restify.createServer({
 });
 
 var https = require("https");
+var DOMParser = require('xmldom').DOMParser;
+var fs = require('fs');
 var socketio  = require ("socket.io");
 
+var xmlDoc = "";
+var fileName = "";
 
 server.use(restify.bodyParser());
 
@@ -55,6 +59,7 @@ function handleSenses(senses, time){
         console.dir(senses[i]);
       }
     }
+    updateGPXFile(pushData.LAT, pushData.LON,fileName);
     pushCoordsData(pushData); // send data to browser
 }
 
@@ -65,7 +70,7 @@ if (i < 10) {
     return i;
 }
 
-function getDateTime(paras) {
+function getDateTime() {
     var today = new Date();
     var dd = today.getDate();
     var mm = today.getMonth()+1; //January is 0!
@@ -87,8 +92,60 @@ function getDateTime(paras) {
 
 function generateGPXFileName() {
     var date_ext = getDateTime();
-    var fileName =  "koira"+date_ext+".gpx"; 
+    fileName =  "koira"+date_ext+".gpx"; 
     return fileName;
+}
+
+function updateGPXFile(LAT, LON){
+  // create first <trkpt></trkpt> tags with proper indent
+  var trackSeg = xmlDoc.getElementsByTagName("trkseg")[0];
+  var trackPointEle = xmlDoc.createElement("trkpt");
+  var indent = xmlDoc.createTextNode("   ");
+  trackSeg.appendChild(indent);
+  trackSeg.appendChild(trackPointEle);
+  indent = xmlDoc.createTextNode("\n       ");
+  trackSeg.appendChild(indent)
+  
+  // create lat and lon attributes to the last <trkpt> and handle proper indent
+  var length = xmlDoc.getElementsByTagName("trkpt").length;
+  if (length>0){
+    var trackPoint = xmlDoc.getElementsByTagName("trkpt")[length-1];
+  }
+  trackPoint.setAttribute("lat", LAT);
+  trackPoint.setAttribute("lon", LON);
+  indent = xmlDoc.createTextNode("\n          ");
+  trackPoint.appendChild(indent);
+  
+  // add <time>add_time_here</time> tag with proper indent
+  var timeISO = new Date().toISOString();
+  var timeEle = xmlDoc.createElement("time");
+  var timeText = xmlDoc.createTextNode(timeISO);
+  timeEle.appendChild(timeText);
+  trackPoint.appendChild(timeEle);
+  indent = xmlDoc.createTextNode("\n       ");
+  trackPoint.appendChild(indent);
+  
+  fs.writeFile(fileName, xmlDoc, function (err) {
+    if (err) return console.log(err);
+    console.log("GPX File "+ fileName + " updated");
+  });
+}
+
+function createGPXFile(fileName){
+  var text="<?xml version=\"1.0\"?>\n"+
+  "<gpx version=\"1.0\" creator=\"Maalimies\" xmlns=\"http://www.topografix.com/GPX/1/0\">\n"+
+  "  <trk>\n"+
+  "    <trkseg>\n"+
+  "    </trkseg>\n"+
+  "  </trk>\n"+
+  "</gpx>\n";
+  
+  var parser = new DOMParser();
+  xmlDoc = parser.parseFromString(text,"text/xml");
+  fs.writeFile(fileName, xmlDoc, function (err) {
+    if (err) return console.log(err);
+    console.log("GPX File "+ fileName + " created");
+  });
 }
 
 
@@ -105,6 +162,7 @@ server.post('/startHaku', function (req, res, next) {
     var hakuStarted = true;
     console.log ("Start button clicked, Haku can start");
     generateGPXFileName(fileName);
+    createGPXFile(fileName);
     res.end(fileName);
 });
 
@@ -135,8 +193,6 @@ server.post('/', function (req, res, next) {
 io.sockets.on('connection', function (socket) {
     //wait for client to make a socket connection
     console.log("socket connection has been made");
-    //var string = "Oh. Just got a new visitor to my webpage :)";
-    //postToFacebook(string, config.token);
 });                              
 
 server.listen(8060, function () {
