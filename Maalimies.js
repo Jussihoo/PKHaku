@@ -59,7 +59,9 @@ function handleSenses(senses, time){
         console.dir(senses[i]);
       }
     }
-    updateGPXFile(pushData.LAT, pushData.LON,fileName);
+    if (fileName != ""){
+      updateGPXFile(pushData.LAT, pushData.LON,fileName);
+    }
     pushCoordsData(pushData); // send data to browser
 }
 
@@ -171,6 +173,7 @@ server.post('/stopHaku', function (req, res, next) {
     var hakuStarted = false;
     console.log ("stop button clicked, Haku stopped");
 //    closeGPXFileName(fileName);
+    fileName = "";
     res.end(fileName);
 });
 
